@@ -1,1 +1,39 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container-fluid">
+                    <!-- Collapsible Button -->
+        <button class="navbar-toggler" type="button" (click)="collapsed = !collapsed">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+            <!--Brand-->
+        <a routerLink="/" class="navbar-brand mr-auto" href="#">Recipe Book</a>
+        
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" 
+            [class.collapse]="collapsed" (window:resize)="collapsed = true">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Recipes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Shopping List</a>
+            </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                        href="#" role="button">Manage
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Save data</a>
+                        <a class="dropdown-item" href="#">Fetch data</a>
+                    </div>
+                    
+                </li>
+
+            </ul>
+        </div>     
+    </div>
+
+</nav>
