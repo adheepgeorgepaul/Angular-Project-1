@@ -19,11 +19,15 @@
         <div class="btn-group">
             <button 
                 type="button" 
-                class="btn-primary dropdown-toggle">
+                class="btn-primary dropdown-toggle"
+                appDropdown #ref="appDropdown">
                 Manage Recipe
             </button>
             <!-- clicking on dropdown toggle shows the dropdown menu -->
-            <ul class="dropdown-menu">
+            <ul 
+                class="dropdown-menu" 
+                [ngClass]="{'show': ref.showMenu}">
+                
                 <li class="dropdown-item">
                     <a href="#">Add Ingredients to Shopping List</a>
                 </li>
