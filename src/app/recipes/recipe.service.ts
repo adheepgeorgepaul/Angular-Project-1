@@ -1,24 +1,48 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { Recipe } from './recipe.model';
 
+@Injectable()
 export class RecipeService
 {
     recipeSelected = new EventEmitter<Recipe>();
 
     private recipes: Recipe[] = [
-        new Recipe('Test Recipe 1', 'This is test 1',
-        'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/105168995/original/af8c781921c5b18160c2e786a9a982caf39955cb/shoot-quality-food-photography.jpg'),
-    
-        new Recipe('Test Recipe 2', 'This is test 2',
-        'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/105168995/original/af8c781921c5b18160c2e786a9a982caf39955cb/shoot-quality-food-photography.jpg'),
-    
-        new Recipe('Test Recipe 3', 'This is test 3',
-        'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/105168995/original/af8c781921c5b18160c2e786a9a982caf39955cb/shoot-quality-food-photography.jpg')
-    
+        new Recipe(
+            'Penne Pasta',
+            'This Creamy Garlic Penne Pasta is a white sauce pasta that is great on it’s own, but could be even heartier if you add chicken or another favorite meat.',
+            'https://lilluna.com/wp-content/uploads/2017/10/penne-pasta-resize-1.jpg',
+            [new Ingredient('Pasta', 2),
+             new Ingredient('Broccoli', 1),
+             new Ingredient('Meat', 1),
+             new Ingredient('Butter', 1),
+             new Ingredient('Garlic', 5),
+             new Ingredient('Cheese',4)    
+            ]),
+            
+        new Recipe(
+            'Banana Pancake',
+            'They’re simple and quick to make, and use ingredients that we nearly always have in the house. They have a fantastic banana flavor, and are totally delicious with butter, syrup, and sliced bananas on top!',
+            'https://lilluna.com/wp-content/uploads/2018/03/banana-pancakes-resize-9.jpg',
+            [new Ingredient('Flour', 1),
+             new Ingredient('Sugar', 2),
+             new Ingredient('Baking Soda', 1),
+             new Ingredient('Salt', 1),
+             new Ingredient('Eggs', 5),
+             new Ingredient('Bananas',4)    
+            ])
     ];
+
+    constructor(private slService: ShoppingListService ){}
 
     getRecipe()
     {
         return this.recipes.slice()
+    }
+
+    addIngredientsToShoppingList(ingredients: Ingredient[])
+    {
+        this.slService.addIngredients(ingredients);
     }
 }
