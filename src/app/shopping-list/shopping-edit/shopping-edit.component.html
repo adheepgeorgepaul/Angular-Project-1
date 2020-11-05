@@ -11,7 +11,7 @@
                         type="text" 
                         id="name" 
                         class="form-control"
-                        placeholder="Enter Name">
+                        placeholder="Ingredient">
                 </div>
                 <div class="col-sm-2 form-group">
                     <label for="amount">Amount</label>
@@ -34,7 +34,13 @@
                         type="submit">
                         {{ editMode ? 'Update' : 'Add' }}
                     </button>
-                    <button class="btn btn-danger mr-1" type="button">Delete</button>
+                    <button
+                    *ngIf="editMode" 
+                    class="btn btn-danger mr-1" 
+                    type="button"
+                    (click)="onDelete()">
+                        Delete
+                    </button>
                     <button 
                         class="btn btn-primary" 
                         type="button"
