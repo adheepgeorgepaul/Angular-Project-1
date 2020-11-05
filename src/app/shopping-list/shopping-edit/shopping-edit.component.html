@@ -1,30 +1,33 @@
 <div class="row">
     <div class="col-12">
-        <form>
+        <form (ngSubmit)="onAddItem(f)" #f="ngForm">
             <div class="row">
                 <div class="col-sm-5 form-group">
                     <label for="name">Name</label>
-                    <input 
+                    <input
+                        ngModel
+                        name="name" 
                         type="text" 
-                        id="name" class="form-control"
-                        placeholder="Enter Name"
-                        #nameInput>
+                        id="name" 
+                        class="form-control"
+                        placeholder="Enter Name">
                 </div>
                 <div class="col-sm-2 form-group">
                     <label for="amount">Amount</label>
-                    <input 
-                        type="number" id="amount" 
+                    <input
+                        ngModel
+                        name="amount" 
+                        type="number" 
+                        id="amount" 
                         class="form-control"
-                        placeholder="Amount"
-                        #amountInput>
+                        placeholder="Amount">
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
                     <button 
                         class="btn btn-success mr-1" 
-                        type="submit"
-                        (click)="onAddItem()">
+                        type="submit">
                         Add
                     </button>
                     <button class="btn btn-danger mr-1" type="button">Delete</button>
