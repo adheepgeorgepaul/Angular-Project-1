@@ -6,7 +6,8 @@
                     <label for="name">Name</label>
                     <input
                         ngModel
-                        name="name" 
+                        name="name"
+                        required 
                         type="text" 
                         id="name" 
                         class="form-control"
@@ -16,7 +17,9 @@
                     <label for="amount">Amount</label>
                     <input
                         ngModel
-                        name="amount" 
+                        name="amount"
+                        required 
+                        pattern="^[1-9]+[0-9]*$"
                         type="number" 
                         id="amount" 
                         class="form-control"
@@ -25,7 +28,8 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <button 
+                    <button
+                        [disabled]="!f.valid" 
                         class="btn btn-success mr-1" 
                         type="submit">
                         Add
