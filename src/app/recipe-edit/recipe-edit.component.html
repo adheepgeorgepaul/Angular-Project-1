@@ -65,16 +65,21 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <div class="row">
+                <div class="col-12" formArrayName="ingredients">
+                    <div 
+                        class="row"
+                        *ngFor="let ingredientCtrl of getControls(); let i = index" 
+                        [formGroupName]="i">
                        <div class="col-7">
                            <input
+                            formControlName="name"
                             type="text"
                             class="form-control"
                             placeholder="ingredient">
                        </div>
                        <div class="col-3">
                            <input
+                            formControlName="amount"
                             type="number"
                             class="form-control"
                             placeholder="amount">
