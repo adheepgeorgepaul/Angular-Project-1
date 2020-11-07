@@ -1,3 +1,4 @@
+import { Reference } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -26,6 +27,16 @@ export class RecipeEditComponent implements OnInit {
         this.id = +params['id'];
         this.editMode = params['id'] != null;
         this.initForm();
+        //3 ways to access a form element
+        // 1
+        console.log(this.recipeForm.value.name);
+        // 2
+        console.log(this.recipeForm.get('name').value);
+        // 3
+        // Use a local Reference(#) and access the value from it
+
+       
+        
         
       }
     );
