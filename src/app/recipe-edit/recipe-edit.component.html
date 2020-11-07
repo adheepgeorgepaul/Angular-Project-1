@@ -92,10 +92,11 @@
                             placeholder="amount">
                        </div>
                        <div class="col-2">
-                            <button 
+                            <button
+                            (click)="onDeleteIngredient(i)" 
                                 class="btn btn-danger"
                                 type="button">
-                                X           
+                                -           
                             </button>
                        </div>
                     </div>
@@ -109,6 +110,12 @@
                     class="btn btn-success"
                     type="button">
                     Add Ingredient
+                  </button>
+                  <button
+                    (click)="onClearIngredients()" 
+                    class="btn btn-danger float-right mr-5"
+                    type="button">
+                    Clear all Ingredients
                   </button>
               </div>  
             </div>
