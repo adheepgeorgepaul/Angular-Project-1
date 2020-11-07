@@ -4,7 +4,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
-                        <button 
+                        <button
+                            [disabled]="!recipeForm.valid" 
                             class="btn btn-success"
                             type="button">
                             Save
