@@ -12,20 +12,27 @@
         <div class="collapse navbar-collapse" 
             [class.collapse]="collapsed" (window:resize)="collapsed = true">
             <ul class="navbar-nav mr-auto">
-            <li class="nav-item" routerLinkActive="active">
-                <a 
-                class="nav-link" 
-                routerLink="/recipes">
-                    Recipes
-                </a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a 
-                class="nav-link" 
-                [routerLink]="['/shopping-list']">
-                    Shopping List
-                </a>
-            </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a 
+                    class="nav-link" 
+                    routerLink="/recipes">
+                        Recipes
+                    </a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a 
+                    class="nav-link" 
+                    [routerLink]="['/auth']">
+                        Authentication
+                    </a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a 
+                    class="nav-link" 
+                    [routerLink]="['/shopping-list']">
+                        Shopping List
+                    </a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ml-auto">
