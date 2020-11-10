@@ -36,8 +36,15 @@
                         Manage
                     </a>
                     <div class="dropdown-menu" [ngClass]="{'show': ref.showMenu}">
-                        <a class="dropdown-item" style="cursor: pointer">Save data</a>
-                        <a class="dropdown-item" style="cursor: pointer">Fetch data</a>
+                        <a 
+                            (click)="onSaveData()"
+                            class="dropdown-item" 
+                            style="cursor: pointer">
+                            Save data
+                        </a>
+                        <a class="dropdown-item" style="cursor: pointer">
+                            Fetch data
+                        </a>
                     </div>
                     
                 </li>
