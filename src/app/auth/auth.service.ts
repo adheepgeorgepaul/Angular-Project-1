@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -30,20 +30,8 @@ export class AuthService
                                 returnSecureToken: true
                             }
                     )
-                    .pipe(catchError( errorResponse => {
-                        let errorMessage = 'An unknown error occured!';
-                        if(!errorResponse.error || !errorResponse.error.error)
-                        {
-                            return throwError(errorMessage);
-                        }
-                        switch(errorResponse.error.error.message)
-                        {
-                            case 'EMAIL_EXISTS':
-                                errorMessage = 'This email already exists!';
-                        }
-                        return throwError(errorMessage);
-                    })
-                    );
+                    .pipe(catchError(this.handleError));
+                
     }
     
     login(email: string, password: string)
@@ -56,23 +44,32 @@ export class AuthService
                             returnSecureToken: true
                         }
                     )
-                    .pipe(catchError(errorRes => {
-                        let errorMessage = 'An unknown error has occured';
-                        if(!errorRes.error || !errorRes.error.error)
-                        {
-                            return throwError(errorMessage);
-                        }
-                        switch(errorRes.error.error.message)
-                        {
-                            case 'EMAIL_NOT_FOUND':
-                                    errorMessage = 'Incorrect login information!';
-                            case 'INVALID_PASSWORD':
-                                    errorMessage = 'Invalid password!';
-                            case 'USER_DISABLED':
-                                    errorMessage = 'Your account has been disabled.';
-                        }
-                        return throwError(errorMessage);
-                    })
-                    );
+                    .pipe(catchError(this.handleError));
+    }
+
+
+    private handleError(errorRes: HttpErrorResponse)
+    {
+        let errorMessage = 'An unknown error has occured';
+        if(!errorRes.error || !errorRes.error.error)
+        {
+            return throwError(errorMessage);
+        }
+        switch(errorRes.error.error.message)
+        {
+            case 'EMAIL_NOT_FOUND':
+                    errorMessage = "This email doesn't exist!";
+                    break;
+            case 'INVALID_PASSWORD':
+                    errorMessage = 'Invalid password!';
+                    break;
+            case 'USER_DISABLED':
+                    errorMessage = 'Your account has been disabled.';
+                    break;
+            case 'EMAIL_EXISTS':
+                    errorMessage = 'Your account has been disabled.';
+                    break;
+        }
+        return throwError(errorMessage);
     }
 }
