@@ -46,7 +46,8 @@
                 <li 
                     *ngIf="isAuthenticated"
                     class="nav-item">
-                    <a
+                    <a  
+                        (click)="onLogout()"
                         class="nav-link"
                         style="cursor: pointer">
                         Logout
