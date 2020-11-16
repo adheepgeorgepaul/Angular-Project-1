@@ -11,7 +11,7 @@ import { AuthComponent } from './auth.component';
 
     imports: [
         FormsModule,
-        RouterModule.forChild([{path:'auth', component: AuthComponent }]),
+        RouterModule.forChild([{path:'', component: AuthComponent }]),
         SharedModule
     ]
 })
