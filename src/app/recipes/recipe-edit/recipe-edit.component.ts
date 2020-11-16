@@ -1,10 +1,9 @@
-import { Reference } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Recipe } from '../recipes/recipe.model';
+import { RecipeService } from '../recipe.service';
+import { Recipe } from '../recipe.model'; 
 
-import { RecipeService } from '../recipes/recipe.service';
 
 @Component({
   selector: 'app-recipe-edit',
