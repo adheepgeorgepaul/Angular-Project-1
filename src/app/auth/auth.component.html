@@ -3,11 +3,17 @@
         <div *ngIf="isLoading" style="text-align: center;">
             <app-loading-spinner></app-loading-spinner>
         </div>
-        <div
+        <!-- <div
             class="alert alert-danger" 
             *ngIf="error">
             {{ error }}
-        </div>
+        </div> -->
+
+        <app-alert 
+            [message]="error"
+            *ngIf="error">
+        </app-alert>
+
         <form
         *ngIf="!isLoading" 
             #authForm="ngForm" 
