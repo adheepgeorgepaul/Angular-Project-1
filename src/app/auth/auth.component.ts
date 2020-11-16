@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ComponentFactoryResolver } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+
 import { AuthService, AuthResponseData } from './auth.service';
+import { AlertComponent } from '../shared/alert/alert.component';                                                                                      
 
 @Component({
     selector: 'app-auth',
@@ -12,7 +14,8 @@ export class AuthComponent
 {
     constructor(
         private authService: AuthService,
-        private router: Router
+        private router: Router,
+        private componentFactoryResolver: ComponentFactoryResolver
         ){}
 
     isLoginMode = true;
@@ -55,6 +58,7 @@ export class AuthComponent
                 errorMessage => {
                     this.isLoading = false;
                     this.error = errorMessage;
+                    this.showErrorAlert(errorMessage);
                 }
                 );
         form.reset();
@@ -63,5 +67,10 @@ export class AuthComponent
     onHandleError()
     {
         this.error = null;
+    }
+
+    private showErrorAlert(message: string)
+    {
+        const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
     }
 }
