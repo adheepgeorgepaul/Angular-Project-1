@@ -9,12 +9,10 @@ import { HeaderComponent } from './header/header.component';
 import { ShoppingListService} from './shopping-list/shopping-list.service';
 import { RecipeService } from './recipes/recipe.service';
 import { AuthComponent } from './auth/auth.component';
-import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
-import { AlertComponent } from './shared/alert/alert.component';
-import { PlaceHolderDirective } from './shared/placeholder/placeholder.directive';
 import { RecipesModule } from './recipes/recipes.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -22,10 +20,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
   declarations: [
     AppComponent,
     HeaderComponent,
-    AuthComponent,
-    LoadingSpinnerComponent,
-    AlertComponent,
-    PlaceHolderDirective
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -34,14 +29,14 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
     HttpClientModule,
     AppRoutingModule,
     RecipesModule,
-    ShoppingListModule
+    ShoppingListModule,
+    SharedModule
   ],
   providers: [
       ShoppingListService, 
       RecipeService,
       { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
   ],
-  bootstrap: [AppComponent],
-  entryComponents: [AlertComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
