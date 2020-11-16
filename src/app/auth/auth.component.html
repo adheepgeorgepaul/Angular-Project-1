@@ -11,7 +11,8 @@
 
         <app-alert 
             [message]="error"
-            *ngIf="error">
+            *ngIf="error"
+            (close)="onHandleError()">
         </app-alert>
 
         <form
